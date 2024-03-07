@@ -44,6 +44,7 @@ const createRestaurant = async(name) => {
         RETURNING *
         `;
     const response = await client.query(SQL, [uuid.v4(), name]);
+    return response.rows[0];
 };
 
 const createReservation = async(customer_id, restaurant_id, party_count, date) => {
